@@ -33,7 +33,7 @@ const LoginPage = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-         backgroundColor:"red",
+         backgroundColor:"#E5E5E5",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
