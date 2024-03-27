@@ -4,6 +4,7 @@ import { bookTicket } from "../redux/actions";
 import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
+import { selectDate } from "../redux/actions";
 
 function TheaterPage() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function TheaterPage() {
   const [selectedShow, setSelectedShow] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [detailsVisible, setDetailsVisible] = useState(false);
+  const selectedDate = useSelector((state) => state.selectedDate);
 
   const seatPrice = 120.09;
   const gstRate = 0.18;
@@ -340,6 +342,25 @@ function TheaterPage() {
     },
   ];
 
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${day}-${month}-${year}`;
+  };
+
+  const getMaxDate = () => {
+    const today = new Date();
+    const maxDate = new Date(today);
+    maxDate.setDate(today.getDate() + 3);
+
+    const year = maxDate.getFullYear();
+    const month = String(maxDate.getMonth() + 1).padStart(2, "0");
+    const day = String(maxDate.getDate()).padStart(2, "0");
+    return `${day}-${month}-${year}`;
+  };
+
   const handleTheaterClick = (theater) => {
     setSelectedTheater(theater);
     setSelectedShow(null);
@@ -384,7 +405,9 @@ function TheaterPage() {
 
     return isBooked;
   };
-
+  const handleDateSelection = (selectedDate) => {
+    dispatch(selectDate(selectedDate));
+  };
   const handleBookTicket = () => {
     if (selectedTheater && selectedShow && selectedSeats.length > 0) {
       const ticketDetails = {
@@ -392,6 +415,7 @@ function TheaterPage() {
         theater: selectedTheater.name,
         show: selectedShow.time,
         seats: selectedSeats,
+        Date: selectedDate,
       };
 
       dispatch(bookTicket(ticketDetails));
@@ -451,6 +475,33 @@ function TheaterPage() {
         }}
       >
         Choose Your Slot
+      </div>
+      <div
+        style={{
+          display: "flex",
+          color: "#fff",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "20px",
+        }}
+      >
+        <label
+          style={{ fontSize: "15 px", fontWeight: "bold", marginRight: "10px" }}
+        >
+          Select Date{" "}
+        </label>
+        <input
+          type="date"
+          onChange={(e) => handleDateSelection(e.target.value)}
+          min={getCurrentDate()}
+          max={getMaxDate()}
+          style={{
+            backgroundColor: "wheat",
+            padding: "10px",
+            fontSize: "15px",
+          }}
+          required
+        />
       </div>
       <div
         style={{
@@ -563,8 +614,7 @@ function TheaterPage() {
                 justifyContent: "center",
               }}
             >
-              {" "}
-              All eyes this way please!{" "}
+              All eyes this way please!
             </div>
             <div
               style={{
@@ -621,7 +671,7 @@ function TheaterPage() {
                   );
                 }
                 return null;
-              })}{" "}
+              })}
             </div>
           </div>
           <div style={{ textAlign: "center" }}>
@@ -640,7 +690,6 @@ function TheaterPage() {
               Book Ticket
             </button>
             {/* <Link to="/confirmation"> */}
-
             <Modal
               title="Confirm Ticket"
               open={isModalOpen}

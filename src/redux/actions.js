@@ -3,11 +3,12 @@ export const SELECT_THEATER = 'SELECT_THEATER';
 export const SELECT_SHOWTIME = 'SELECT_SHOWTIME';
 export const SELECT_SEAT = 'SELECT_SEAT';
 export const BOOK_TICKET = 'BOOK_TICKET';
+export const SELECT_DATE = 'SELECT_DATE';
 
 export const selectMovie = (movie) => ({
   type: SELECT_MOVIE,
-  payload: movie,
-});
+  payload: movie,  
+}); 
 
 export const selectTheater = (theater) => ({
   type: SELECT_THEATER,
@@ -31,3 +32,8 @@ export const bookTicket = (ticketDetails) => {
     payload: ticketDetails,
   };
 };
+
+export const selectDate = (date) => ({
+  type: SELECT_DATE,
+  payload: date,
+});

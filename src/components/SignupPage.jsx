@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Input, Button } from "antd";
 
 const SignupPage = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(""); 
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordValidation, setPasswordValidation] = useState({
@@ -73,7 +73,8 @@ const SignupPage = () => {
         alert("Username already exists. Please choose a different username.");
         return;
       }
-      // else if (
+      
+      //  if (
       //   !passwordValidation.length ||
       //   !passwordValidation.capital ||
       //   !passwordValidation.small ||
@@ -204,7 +205,9 @@ const SignupPage = () => {
               >
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   {!passwordValidation.length && (
-                    <p style={{ color: "red" }}>⨂ Minimum 8 characters</p>
+                    <p style={{ color: "red" }}>
+                      ⨂ Minimum 8 characters
+                    </p>
                   )}
                   {!passwordValidation.capital && (
                     <p style={{ color: "red" }}>

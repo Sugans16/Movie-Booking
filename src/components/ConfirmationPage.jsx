@@ -6,12 +6,19 @@ import { HomeOutlined } from "@ant-design/icons";
 
 const ConfirmationPage = () => {
   const bookedTicket = useSelector((state) => state.bookedTicket);
-  
+  const selectedDate = useSelector((state) => state.selectedDate);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0'); 
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
   const downloadQRCode = () => {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
     const qrCodeElement = document.getElementById("myqrcode");
-
     if (qrCodeElement) {
       const qrCodeCanvas = qrCodeElement.querySelector("canvas");
 
@@ -131,6 +138,8 @@ const ConfirmationPage = () => {
         id="myticket"
         style={{
           display: "flex",
+          flexwrap:"wrap",
+          maxWidth:"60%",
           flexDirection: "column",
           backgroundColor: "#F73A4C",
           color: "#fff",
@@ -167,13 +176,13 @@ const ConfirmationPage = () => {
               value={JSON.stringify(bookedTicket)}
             />
           </div>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", alignItems:"center", justifyContent:"center" }}>
             <img
               src={bookedTicket.movie.image}
               alt={bookedTicket.movie.title}
               style={{
                 borderRadius: "20px",
-                height: "200px",
+                height: "250px",
                 marginTop: "10px",
               }}
             />
@@ -194,8 +203,12 @@ const ConfirmationPage = () => {
                 <strong>Show Time:</strong> {bookedTicket.show}
               </p>
               <p>
+                <strong>Date:</strong> {formatDate(selectedDate)}
+              </p>
+              <p>
                 <strong>Seats:</strong> {bookedTicket.seats.join(", ")}
               </p>
+                 
             </div>
           </div>
         </div>

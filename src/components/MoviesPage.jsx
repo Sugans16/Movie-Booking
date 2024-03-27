@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { selectMovie } from "../redux/actions";
 import { LogoutOutlined } from "@ant-design/icons";
 
-const MoviesPage = () => {
+const MoviesPage = () => { 
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -152,7 +152,7 @@ const MoviesPage = () => {
 
   const handleMovieClick = (movie) => {
     dispatch(selectMovie(movie));
-  };
+  }; 
 
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(searchQuery.toLowerCase())

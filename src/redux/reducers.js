@@ -1,12 +1,13 @@
-import { BOOK_TICKET } from './actions';
+import { BOOK_TICKET, SELECT_DATE } from './actions';
 
 const initialState = {
     selectedMovie: null,
     selectedTheater: null,
     selectedSeat: null,
-    bookedTicket: null,
+    bookedTicket: null, 
+    selectedDate: null,
   };
-  
+   
   const rootReducer = (state = initialState, action) => {
     switch (action.type) {
       case 'SELECT_MOVIE':
@@ -20,6 +21,11 @@ const initialState = {
             ...state,
             bookedTicket: action.payload,
           };
+        case SELECT_DATE:
+      return {
+        ...state,
+        selectedDate: action.payload,
+      };
       default:
         return state;
     }
