@@ -30,7 +30,7 @@ const MoviesPage = () => {
       id: 4,
       title: "Thor",
       image:
-        "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/61P0nv3PV9L._AC_UF894,1000_QL80_.jpg",
+        "https://m.media-amazon.com/images/M/MV5BOGE4NzU1YTAtNzA3Mi00ZTA2LTg2YmYtMDJmMThiMjlkYjg2XkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_.jpg",
     },
     {
       id: 5,
@@ -53,7 +53,7 @@ const MoviesPage = () => {
       id: 8,
       title: "Guardians of the Galaxy",
       image:
-        "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/71lbFfxfMtL._AC_UF1000,1000_QL80_.jpg",
+        "https://m.media-amazon.com/images/I/71PUHIGp+-L._AC_UF894,1000_QL80_.jpg",
     },
     {
       id: 9,
