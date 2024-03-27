@@ -105,8 +105,7 @@ const SignupPage = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundImage:
-            "url(https://png.pngtree.com/background/20210711/original/pngtree-coming-soon-movie-in-cinema-theater-billboard-sign-on-red-theater-picture-image_1157635.jpg)",
+         backgroundColor:"#4096FF",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
